@@ -107,3 +107,4 @@ def show_field_info(nodes):
     print('y_max = %f   y_min = %f ' % (max(y), min(y)))
     print('z_max = %f   z_min = %f ' % (max(z), min(z)))
 
+print(111)
