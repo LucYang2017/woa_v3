@@ -50,7 +50,14 @@ def save_trajectory(agents, leader, serial_no):
     for i in range(len(agent.history)):
         ax.scatter(x[i], y[i], z[i], marker='*', c='r')
         ax.text(x[i], y[i], z[i], '    ' + str(i + 1), color='r', fontsize='large')
-    plt.savefig('result/%s.png' % (serial_no))
+    import os
+    path = 'result/' + str(serial_no)
+    is_exists = os.path.exists(path)
+
+    if not is_exists:
+        os.mkdir(path)
+
+    plt.savefig(path + '/%s.png' % (serial_no))
     plt.show()
 
 

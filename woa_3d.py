@@ -222,7 +222,14 @@ def show_info(agents, leader, t, state):
 
 
 def save_results(agents, leader, serial_no, finding_end):
-    f = open('result/%s.txt' % (serial_no), 'w')
+    import os
+    path = 'result/' + str(serial_no)
+    is_exists = os.path.exists(path)
+
+    if not is_exists:
+        os.mkdir(path)
+
+    f = open(path + '/%s.txt' % (serial_no), 'w')
     for i in range(len(leader.history)):
         if i < finding_end:
             f.write('FINDING  ITER NO. %d\tTIME %d\n' % (i, 2 * i))
@@ -232,3 +239,5 @@ def save_results(agents, leader, serial_no, finding_end):
             f.write('agent no. %d\t\tp: %s\tc: %s\n' % (j, str(agents[j].position), str(agents[j].concentration)))
         f.write('AGENT LEADER\tp: %s\tc: %s\n' % (str(leader.history[i][0]), str(leader.history[i][1])))
     print('Result have been saved to result/%s.txt' % (serial_no))
+
+
