@@ -17,12 +17,15 @@ if __name__ == "__main__":
     plume_finding_threshold = 0.2
     woa_threshold = 0.6
     state = 0
+    finding_end = COUNTER_MAX
     serial_no = str(time.strftime("%Y%m%d-%H%M%S", time.localtime()))
 
     # agents, leader = init_agents_random(agents_no, c_field)
 
     init_position = [-1, -1, 0.5]
     agents, leader = init_agents_fixed(agents_no, c_field, init_position)
+    save_trajectory(agents, leader, serial_no)
+    save_results(agents, leader, serial_no, finding_end)
     show_info(agents, leader, t, state)
 
     while leader.concentration <= plume_finding_threshold and len(leader.history) < COUNTER_MAX:
@@ -31,7 +34,8 @@ if __name__ == "__main__":
             t = 200
         c_field = nodes_msgs_3d(t)
         agents, leader = plume_finding(agents, leader, c_field)
-        show_trajectory(agents, leader, serial_no)
+        save_trajectory(agents, leader, serial_no)
+        save_results(agents, leader, serial_no, finding_end)
         show_info(agents, leader, t, state)
 
     finding_end = len(leader.history)
@@ -43,7 +47,8 @@ if __name__ == "__main__":
             t = 200
         c_field = nodes_msgs_3d(t)
         agents, leader = plume_tracking(agents, leader, c_field)
-        show_trajectory(agents, leader, serial_no)
+        save_trajectory(agents, leader, serial_no)
+        save_results(agents, leader, serial_no, finding_end)
         show_info(agents, leader, t, state)
 
     save_trajectory(agents, leader, serial_no)

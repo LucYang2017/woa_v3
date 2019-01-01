@@ -57,7 +57,7 @@ def save_trajectory(agents, leader, serial_no):
     if not is_exists:
         os.mkdir(path)
 
-    plt.savefig(path + '/%s.png' % (serial_no))
+    plt.savefig(path + '/%s-%s.png' % (serial_no, str(len(leader.history))))
     plt.show()
 
 

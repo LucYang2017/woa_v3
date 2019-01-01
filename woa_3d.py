@@ -229,7 +229,7 @@ def save_results(agents, leader, serial_no, finding_end):
     if not is_exists:
         os.mkdir(path)
 
-    f = open(path + '/%s.txt' % (serial_no), 'w')
+    f = open(path + '/%s-%s.txt' % (serial_no, str(len(leader.history))), 'w')
     for i in range(len(leader.history)):
         if i < finding_end:
             f.write('FINDING  ITER NO. %d\tTIME %d\n' % (i, 2 * i))
