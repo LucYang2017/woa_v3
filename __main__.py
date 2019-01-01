@@ -30,7 +30,7 @@ if __name__ == "__main__":
             t = 200
         c_field = nodes_msgs_3d(t)
         agents, leader = plume_finding(agents, leader, c_field)
-        # show_trajectory(agents, leader, serial_no)
+        show_trajectory(agents, leader, serial_no)
         show_info(agents, leader, t, state)
 
     finding_end = len(leader.history)
@@ -42,7 +42,7 @@ if __name__ == "__main__":
             t = 200
         c_field = nodes_msgs_3d(t)
         agents, leader = plume_tracking(agents, leader, c_field)
-        # show_trajectory(agents, leader, serial_no)
+        show_trajectory(agents, leader, serial_no)
         show_info(agents, leader, t, state)
 
     save_trajectory(agents, leader, serial_no)
