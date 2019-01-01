@@ -239,5 +239,3 @@ def save_results(agents, leader, serial_no, finding_end):
             f.write('agent no. %d\t\tp: %s\tc: %s\n' % (j, str(agents[j].position), str(agents[j].concentration)))
         f.write('AGENT LEADER\tp: %s\tc: %s\n' % (str(leader.history[i][0]), str(leader.history[i][1])))
     print('Result have been saved to result/%s.txt' % (serial_no))
-
-
