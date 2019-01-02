@@ -185,6 +185,7 @@ def woa_3d(agents, leader):
             l = random.uniform(-1, 1)
             new_position = D * math.exp(b * l) * math.cos(2 * math.pi * l) + leader.position
 
+        # print('agent no. %d  a = %f  p = %f A = %s C = %s D = %s' % (agents.index(agent), a, p, str(A), str(C), str(D)))
         new_position = check_boundary_3d(new_position)
         agent.position = new_position
     return agents
@@ -238,4 +239,6 @@ def save_results(agents, leader, serial_no, finding_end):
         for j in range(len(agents)):
             f.write('agent no. %d\t\tp: %s\tc: %s\n' % (j, str(agents[j].position), str(agents[j].concentration)))
         f.write('AGENT LEADER\tp: %s\tc: %s\n' % (str(leader.history[i][0]), str(leader.history[i][1])))
-    print('Result have been saved to result/%s.txt' % (serial_no))
+
+
+a = np.array([random.uniform(-1,1)])
